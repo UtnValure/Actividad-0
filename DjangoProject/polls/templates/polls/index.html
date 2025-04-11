@@ -1,0 +1,9 @@
+{% if ultimas_preguntas %}
+    <ul>
+        {% for p in ultimas_preguntas %}
+            <li><a href="/polls/{{ p.id }}/">{{p.pregunta}}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay preguntas disponibles.</p>
+{% endif %}

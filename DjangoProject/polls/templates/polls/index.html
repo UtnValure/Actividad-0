@@ -1,7 +1,7 @@
 {% if ultimas_preguntas %}
     <ul>
         {% for p in ultimas_preguntas %}
-            <li><a href="/polls/{{ p.id }}/">{{p.pregunta}}</a></li>
+            <li><a href= "{% url 'detail' pregunta_id %}"></a>{{pregunta.pregunta}}</a></li>
         {% endfor %}
     </ul>
 {% else %}

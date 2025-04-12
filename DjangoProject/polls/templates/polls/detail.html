@@ -6,11 +6,23 @@
     <title>Detalles de la pregunta</title>
 </head>
 <body>
-    <h1>{{ pregunta.pregunta }}</h1>
-    <ul>
-        {% for opcion in pregunta.opcion_set.all %}
-            <li>{{ opcion.opcion }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container mt-5">
+        <form action="{% url 'polls:votos' pregunta.id %}" method="post">
+            {% csrf_token %}
+            <fieldset class="mb-3">
+                <legend><h1>{{ pregunta.pregunta }}</h1></legend>
+                {% if error_message %}
+                    <div class="alert alert-danger">{{ error_message }}</div>
+                {% endif %}
+                {% for opcion in pregunta.opcion_set.all %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="opcion" id="opcion{{ forloop.counter }}" value="{{ opcion.id }}">
+                        <label class="form-check-label" for="opcion{{ forloop.counter }}">{{ opcion.opcion }}</label>
+                    </div>
+                {% endfor %}
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Votar</button>
+        </form>
+    </div>
 </body>
 </html>

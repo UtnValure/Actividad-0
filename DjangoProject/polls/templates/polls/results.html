@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la pregunta</title>
+</head>
+<body>
+   <h1>{{ pregunta.pregunta }}</h1>
+   <ul>
+    {% for op in pregunta.opcion_set.all %}
+    <li> {{op.opcion}} -- {{op.votos}} vote{{op.votos|pluralize }}</li>
+    {% endfor %}
+   </ul>
+   <a href="{% url 'polls:detalle' pregunta.id%}">¿Desea votar otra vez?</a>
+</body>
+</html>

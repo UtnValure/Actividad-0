@@ -1,4 +1,12 @@
-{% if ultimas_preguntas %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Ultimas preguntas!</title>
+</head>
+<body>
+    {% if ultimas_preguntas %}
     <ul>
         {% for p in ultimas_preguntas %}
             <li><a href= "{% url 'polls:detalle' p.id %}">{{p.pregunta}}</a></li>
@@ -7,3 +15,8 @@
 {% else %}
     <p>No hay preguntas disponibles.</p>
 {% endif %}
+</body>
+</html>
+
+
+
